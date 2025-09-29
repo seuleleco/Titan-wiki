@@ -1,11 +1,11 @@
 <template>
   <div>
-    teste
-    <!-- <NuxtRouteAnnouncer />
-    <NuxtWelcome /> -->
+   
+    <titans /> 
   </div>
 </template>
 
+
 <script setup>
-import "bootstrap/dist/css/bootstrap.min.css";
+import titans from '../components/titans.vue'
 </script>
