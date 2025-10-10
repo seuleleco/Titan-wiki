@@ -1,75 +1,51 @@
-# Nuxt Minimal Starter
+📖Bestiário Interativo de Titans - Shingeki no Kyojin
+===================================================
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Este é um **Bestiário Interativo** dos Titans do universo de _Attack on Titan_.
+O projeto está atualmente em **desenvolvimento ativo**.
 
-## Setup
+🚀 Tecnologias Utilizadas
+-------------------------
 
-Make sure to install dependencies:
+Este projeto é construído com as seguintes tecnologias principais:
 
-```bash
-# npm
-npm install
+*   **Nuxt.js (Vue.js Framework):** Para o desenvolvimento da interface de usuário e renderização do lado do servidor (SSR/SSG), garantindo um desempenho rápido e otimizado.
+    
+*   **SASS (ou a sua biblioteca de CSS):** Para estilização rápida e responsiva.
+  
+*   **Endpoint Principal** Fonte de dados:
+    
+    *   **Attack on Titan API:** https://api.attackontitanapi.com/
+        
 
-# pnpm
-pnpm install
+🛠️ Configuração e Execução do Projeto
+--------------------------------------
 
-# yarn
-yarn install
+Para rodar este projeto localmente, siga os passos abaixo:
 
-# bun
-bun install
-```
+### 1\. Pré-requisitos
 
-## Development Server
+Certifique-se de ter o **Node.js** (versão LTS recomendada).
 
-Start the development server on `http://localhost:3000`:
+### 2\. Clonar o Repositório
 
-```bash
-# npm
-npm run dev
+<strong>git clone https://github.com/seuleleco/Titan-wiki.git</strong>
+   
 
-# pnpm
-pnpm dev
+### 3\. Instalar Dependências
 
-# yarn
-yarn dev
+Execute a instalação das dependencias do projeto :
 
-# bun
-bun run dev
-```
+<strong>npm install</strong>  
 
-## Production
+### 4\. Executar o ambiente de desenvolvimento
 
-Build the application for production:
+Inicie o servidor de desenvolvimento.
 
-```bash
-# npm
-npm run build
+ <strong>npm run dev</strong>
 
-# pnpm
-pnpm build
 
-# yarn
-yarn build
+🧑‍💻 Autor
+-----------
 
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+**https://github.com/seuleleco**
