@@ -9,9 +9,9 @@ O projeto está atualmente em **desenvolvimento ativo**.
 
 Este projeto é construído com as seguintes tecnologias principais:
 
-*   **Nuxt.js (Vue.js Framework):** Para o desenvolvimento da interface de usuário e renderização do lado do servidor (SSR/SSG), garantindo um desempenho rápido e otimizado.
+*   **Nuxt.js (Vue.js Framework).** 
     
-*   **SASS (ou a sua biblioteca de CSS):** Para estilização rápida e responsiva.
+*   **SASS:** Para estilização rápida e responsiva.
   
 *   **Endpoint Principal** Fonte de dados:
     
