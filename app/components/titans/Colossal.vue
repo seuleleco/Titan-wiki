@@ -1,6 +1,6 @@
 <template>
-  <div class="container h-100 w-100">
-    <div class="min-vh-100 min-vw-100 background-gif-colossal">
+  <div class="container min-vw-100">
+    <div class="background-gif-colossal">
       <h1>colossal</h1>
     </div>
   </div>
@@ -13,6 +13,6 @@
   background-attachment: fixed;
   min-width: 100vh;
   min-height: 100vh;
-  margin: 0;
+  border: 0;
 }
 </style>

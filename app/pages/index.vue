@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <button @click="componenteAtual = 'Attack'">Titan de ataque</button>
-    <button @click="componenteAtual = 'Hammer'">Titan Martelo</button>
-    <button @click="componenteAtual = 'Colossal'">Titan Colossal</button>
-    <button @click="componenteAtual = 'Blindado'">Titan Blindado</button>
-    <button @click="componenteAtual = 'Female'">Titan Femea</button>
+  <div class="containerbg min-vw-100">
+    <Header
+      :modelValue="componenteAtual"
+      @update:modelValue="componenteAtual = $event"
+    />
 
     <transition name="fade" mode="out-in">
       <component :is="componenteAtivo" />
@@ -13,29 +12,32 @@
 </template>
 
 <script setup>
-import Attack from "~/components/titans/Attack.vue";
-import Hammer from "~/components/titans/Hammer.vue";
-import Colossal from "~/components/titans/Colossal.vue";
-import Blindado from "~/components/titans/Blindado.vue";
-import Female from "~/components/titans/Female.vue";
-
-const componenteAtual = shallowRef("Attack");
+import Header from "~/components/Header.vue";
 
 const titansComponents = {
-  Attack,
-  Hammer,
-  Colossal,
-  Blindado,
-  Female,
+  Attack: resolveComponent("Attack"),
+  Hammer: resolveComponent("Hammer"),
+  Colossal: resolveComponent("Colossal"),
+  Blindado: resolveComponent("Blindado"),
+  Female: resolveComponent("Female"),
 };
-
+const componenteAtual = ref("Attack");
 const componenteAtivo = computed(() => titansComponents[componenteAtual.value]);
 </script>
 
 <style>
+body {
+  margin: 0;
+}
+/* .containerbg {
+  background-color: black;
+  min-height: 100vh;
+  min-width: 100vh;
+} */
+
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.4s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .fade-leave-to {
@@ -47,5 +49,6 @@ const componenteAtivo = computed(() => titansComponents[componenteAtual.value]);
 .fade-enter-from {
   opacity: 0;
   transform: translateX(-30px);
+  filter: blur(10px);
 }
 </style>
