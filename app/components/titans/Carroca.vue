@@ -1,12 +1,12 @@
 <template>
-  <div class="background-gif-colossal">
-    <h1>colossal</h1>
+  <div class="background-gif-carroca">
+    <h1>carroça</h1>
   </div>
 </template>
 
 <style>
-.background-gif-colossal {
-  background-image: url("/colossal.gif");
+.background-gif-carroca {
+  background-image: url("/carroca.gif");
   background-size: cover;
   background-attachment: fixed;
 

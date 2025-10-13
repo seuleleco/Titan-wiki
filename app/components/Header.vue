@@ -1,11 +1,16 @@
 <template>
   <header>
-    <div class="headerContainer d-flex align-items-center">
+    <div
+      class="headerContainer d-flex align-items-center justify-content-center gap-3"
+    >
       <button @click="set('Attack')">Titan de ataque</button>
       <button @click="set('Hammer')">Titan Martelo</button>
       <button @click="set('Colossal')">Titan Colossal</button>
       <button @click="set('Blindado')">Titan Blindado</button>
       <button @click="set('Female')">Titan Femea</button>
+      <button @click="set('Bestial')">Titan Bestial</button>
+      <button @click="set('Mandibula')">Titan Mandibula</button>
+      <button @click="set('Carroca')">Titan Carroca</button>
     </div>
   </header>
 </template>

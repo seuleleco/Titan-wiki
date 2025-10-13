@@ -3,7 +3,7 @@
     <Header
       :modelValue="componenteAtual"
       @update:modelValue="componenteAtual = $event"
-    />
+    ></Header>
 
     <transition name="fade" mode="out-in">
       <component :is="componenteAtivo" />
@@ -13,13 +13,24 @@
 
 <script setup>
 import Header from "~/components/Header.vue";
+import Attack from "~/components/titans/Attack.vue";
+import Hammer from "~/components/titans/Hammer.vue";
+import Colossal from "~/components/titans/Colossal.vue";
+import Blindado from "~/components/titans/Blindado.vue";
+import Female from "~/components/titans/Female.vue";
+import Bestial from "~/components/titans/Bestial.vue";
+import Carroca from "~/components/titans/Carroca.vue";
+import Mandibula from "~/components/titans/Mandibula.vue";
 
 const titansComponents = {
-  Attack: resolveComponent("Attack"),
-  Hammer: resolveComponent("Hammer"),
-  Colossal: resolveComponent("Colossal"),
-  Blindado: resolveComponent("Blindado"),
-  Female: resolveComponent("Female"),
+  Attack,
+  Hammer,
+  Colossal,
+  Blindado,
+  Female,
+  Bestial,
+  Carroca,
+  Mandibula,
 };
 const componenteAtual = ref("Attack");
 const componenteAtivo = computed(() => titansComponents[componenteAtual.value]);
@@ -28,12 +39,8 @@ const componenteAtivo = computed(() => titansComponents[componenteAtual.value]);
 <style>
 body {
   margin: 0;
-}
-/* .containerbg {
   background-color: black;
-  min-height: 100vh;
-  min-width: 100vh;
-} */
+}
 
 .fade-enter-active,
 .fade-leave-active {
