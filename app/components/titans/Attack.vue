@@ -11,12 +11,19 @@
 
 
       <div class="col-lg-2 text-end pe-0 imgcentro">
+          <div id="titanCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+              <div v-for="(img, i) in titanimg" :key="i" class="carousel-item" :class="{ active: i === 0 }">
+
         <img
-        src="https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/04/Eren-Attack-Titan-Final-Season.jpeg"
+        src="titanimg[i]"
         class="img-fluid"
-        alt="Titã de Ataque"
+        alt="`SLIDE ${I + 1}`"
         style="max-height: 80vh; object-fit: contain;"> 
       </img>
+      </div>
+      </div>
+      </div>
       </div>
     </div>
   </div>
@@ -24,6 +31,8 @@
 
 <script>
 const { name } = await $fetch("https://api.attackontitanapi.com/titans/1");
+
+const titanimg = ['https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/04/Eren-Attack-Titan-Final-Season.jpeg', 'https://i.imgur.com/HFFycBY.png']
 
 export default {
   data() {
