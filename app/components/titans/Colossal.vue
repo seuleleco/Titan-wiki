@@ -14,3 +14,4 @@
   border: 0;
 }
 </style>
+https://static0.srcdn.com/wordpress/wp-content/uploads/2019/07/attack-on-titan-colossal-titan.jpg?q=50&fit=crop&w=1600&h=900&dpr=1.5

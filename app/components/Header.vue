@@ -10,7 +10,7 @@
       <button @click="set('Female')">Titan Femea</button>
       <button @click="set('Bestial')">Titan Bestial</button>
       <button @click="set('Mandibula')">Titan Mandibula</button>
-      <button @click="set('Carroca')">Titan Carroca</button>
+      <button @click="set('Carroca')">Titan Carroça</button>
     </div>
   </header>
 </template>
