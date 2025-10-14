@@ -44,18 +44,18 @@ body {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .fade-leave-to {
   opacity: 0;
-  transform: translateX(-30px);
-  filter: blur(10px);
+  transform: translateX(-40px);
+  filter: blur(20px);
 }
 
 .fade-enter-from {
   opacity: 0;
-  transform: translateX(-30px);
-  filter: blur(10px);
+  transform: translateX(-40px);
+  filter: blur(20px);
 }
 </style>

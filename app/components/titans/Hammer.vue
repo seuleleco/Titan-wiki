@@ -13,3 +13,4 @@
   margin: 0;
 }
 </style>
+https://static0.srcdn.com/wordpress/wp-content/uploads/2024/05/attack-on-titan-s-war-hammer-titan-generating-a-weapon.jpg
