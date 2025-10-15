@@ -1,6 +1,6 @@
 import { onMounted, nextTick } from 'vue'
 
-export function useCarousel (selector = '#titanCarousel', options = { interval: 6000 }) {
+export function useCarousel (selector = '#titanCarousel', options = { interval: 1000 }) {
 
     onMounted(() => {
       nextTick(() => {
