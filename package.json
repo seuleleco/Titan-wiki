@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@bootstrap-vue-next/nuxt": "^0.40.6",
-    "bootstrap": "^5.3.8",
+    "bootstrap": "^5.3.3",
     "bootstrap-vue-next": "^0.40.6"
   }
 }

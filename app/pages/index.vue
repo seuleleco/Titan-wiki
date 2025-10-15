@@ -22,6 +22,14 @@ import Bestial from "~/components/titans/Bestial.vue";
 import Carroca from "~/components/titans/Carroca.vue";
 import Mandibula from "~/components/titans/Mandibula.vue";
 
+
+
+useHead({
+  script: [{src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+    defer: true
+  }]
+})
+
 const titansComponents = {
   Attack,
   Hammer,
