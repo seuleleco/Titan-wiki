@@ -4,10 +4,21 @@
     <div class="row w-100 ">
       <div class="col-4 lg-6 ps-5 conteudo">
         
-        <h1 class="display-4 fw-bold">{{ titan1 }}</h1>
-        <p class="lead">ALtura:
-          <br></br> Habilidade:</p>
+        <div class="ms-5 mt-5">
+        <h1 class="display-4 fw-bold ">{{ titanName }}</h1>
+        <div class="text-start mt-5 "> 
+        <p class="lead fw-bold">ALtura: <span class="fw-normal">{{ altura }}</span></p> 
+         <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
+         <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
+         <p class="lead fw-bold"> Herdeiros: <span class="fw-normal"><br> {{ erenJ }} <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
+           <button @click="showHerd = !showHerd">
+               Herdeiros Anteriores
+            </button>
+            <br>
+           <span v-if="showHerd">{{ grisha }}<br> {{ eren2 }}</span></p>
+         </div>
         <button class="btn btn-danger">Mais Detalhes</button>
+      </div>
       </div>
 
 
@@ -22,7 +33,7 @@
         :alt="`Slide ${i + 1}`"
         style="max-height: 80vh; object-fit: contain;"> 
         <div class="carousel-caption caption-top">
-          <h5 >{{ eren2 }}</h5>
+          <h5 >{{ titanCaptions[i] }}</h5>
         </div>
       </div>
       </div>
@@ -36,21 +47,37 @@
 
 <script setup>
 import { useCarousel } from '../../../composables/useCarousel'
-import { getTitanById } from '../../../services/titanApi'
+import { getTitanByIds } from '../../../services/titanApi'
 import { getCharacterByIds } from '../../../services/charactersApi'
 
-const titan1 = ref('')
+const titanName = ref('')
+const altura = ref('')
+const skils = ref('')
 const erenJ  = ref('')
 const eren2  = ref('')
 const grisha  = ref('')
+const alianca  = ref('')
+
+const showHerd = ref(false)
 
 onMounted(async () => {
-   titan1.value = await getTitanById(1)
+  
+   const titans = await getTitanByIds([1])
+   titanName.value = titans.find(titan => titan.id === 1)?.name
+   altura.value = titans.find(titan => titan.id === 1)?.height
+   skils.value = titans.find(titan => titan.id === 1)?.abilities
+   alianca.value = titans.find(titan => titan.id === 1)?.allegiance
+
    const characters = await getCharacterByIds([188, 98, 160])
-   erenJ.valeu = characters.find(character => character.id === 188)?.name
+   erenJ.value = characters.find(character => character.id === 188)?.name
    eren2.value = characters.find(character => character.id === 98)?.name
    grisha.value = characters.find(character => character.id === 160)?.name
+    
+   
 })
+
+
+
 
 useCarousel('#titanCarousel')
 
@@ -59,7 +86,7 @@ const titanimg = ['https://static0.cbrimages.com/wordpress/wp-content/uploads/20
 'https://i.imgur.com/HFFycBY.png'
 ]
 
-const titanCaptions = []
+const titanCaptions = [erenJ, grisha, eren2 ]
 
 // export default {
 //   data() {
@@ -139,4 +166,12 @@ const titanCaptions = []
 .carousel-item:hover .caption-top {
   opacity: 1;
 }
+
+.fs-6 {
+  font-size: 0.9rem !important;
+  color:  rgb(255, 255, 255);
+  font-family: fantasy;
+}
+
+
 </style>
