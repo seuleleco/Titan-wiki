@@ -3,7 +3,7 @@
   <div class="min-vw-100 background-gif-attack">
     <div class="row w-100 ">
       <div class="col-4 lg-6 ps-5 conteudo">
-        <h1>SITE EM DESENVOLVIMENTO</h1>
+     
         <div class="ms-5 mt-5">
         <h1 class="display-4 fw-bold ">{{ titanName }}</h1>
         <div class="text-start mt-5 "> 
@@ -49,6 +49,7 @@
 import { useCarousel } from '../../../composables/useCarousel'
 import { getTitanByIds } from '../../../services/titanApi'
 import { getCharacterByIds } from '../../../services/charactersApi'
+alert("SITE EM DESENVOLVIMENTO");
 
 const titanName = ref('')
 const altura = ref('')
