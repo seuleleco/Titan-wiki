@@ -3,7 +3,7 @@
   <div class="min-vw-100 background-gif-attack">
     <div class="row w-100 ">
       <div class="col-4 lg-6 ps-5 conteudo">
-     
+        
         <div class="ms-5 mt-5">
         <h1 class="display-4 fw-bold ">{{ titanName }}</h1>
         <div class="text-start mt-5 "> 
@@ -46,10 +46,11 @@
 
 
 <script setup>
+
 import { useCarousel } from '../../../composables/useCarousel'
 import { getTitanByIds } from '../../../services/titanApi'
 import { getCharacterByIds } from '../../../services/charactersApi'
-alert("SITE EM DESENVOLVIMENTO");
+
 
 const titanName = ref('')
 const altura = ref('')
@@ -62,6 +63,8 @@ const alianca  = ref('')
 const showHerd = ref(false)
 
 onMounted(async () => {
+ 
+  
   
    const titans = await getTitanByIds([1])
    titanName.value = titans.find(titan => titan.id === 1)?.name
