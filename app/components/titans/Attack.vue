@@ -11,13 +11,17 @@
          <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
          <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
          <p class="lead fw-bold"> Herdeiros: <span class="fw-normal"><br> {{ erenJ }} <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
-           <button @click="showHerd = !showHerd">
+          
+           <button class="btn btn-danger" data-toggle="collapse"  @click="showHerd = !showHerd">
+            
+               <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
                Herdeiros Anteriores
             </button>
             <br>
-           <span v-if="showHerd">{{ grisha }}<br> {{ eren2 }}</span></p>
+            <Transition name=slide-fade>
+           <span v-if="showHerd">{{ grisha }}<br> {{ eren2 }}</span></Transition></p>
          </div>
-        <button class="btn btn-danger">Mais Detalhes</button>
+        <button class="btn btn-danger disabled">Mais Detalhes</button>
       </div>
       </div>
 
