@@ -46,9 +46,11 @@
 
 
 <script setup>
+
 import { useCarousel } from '../../../composables/useCarousel'
 import { getTitanByIds } from '../../../services/titanApi'
 import { getCharacterByIds } from '../../../services/charactersApi'
+
 
 const titanName = ref('')
 const altura = ref('')
@@ -61,6 +63,8 @@ const alianca  = ref('')
 const showHerd = ref(false)
 
 onMounted(async () => {
+ 
+  
   
    const titans = await getTitanByIds([1])
    titanName.value = titans.find(titan => titan.id === 1)?.name
