@@ -1,4 +1,7 @@
 <template>
+  <div class="d-none minititan ">
+    <img src="/minititan.png" alt="minititan" />
+  </div>
   <div class="containerbg min-vw-100">
     <Header
       :modelValue="componenteAtual"
@@ -65,5 +68,34 @@ body {
   opacity: 0;
   transform: translateX(-40px);
   filter: blur(20px);
+}
+
+
+
+@media (max-width: 768px){
+  .containerbg {
+    display: none !important;
+  }
+  .minititan {
+  display: flex !important;
+  position: fixed;
+  top: 65vh;
+  left: 18vh;
+  width: 20vh;
+  height: 20vh;
+  z-index: 9;
+}
+  body::before {
+    content: "📱No momento, o site não é compativel com dispositivos moveis";
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2rem;
+    color: white;
+    background: #333;
+   
+  }
 }
 </style>
