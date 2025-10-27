@@ -2,7 +2,7 @@
   <div class="background-border">
   <div class="min-vw-100 background-gif-attack">
     <div class="row w-100 ">
-      <div class="col-4 lg-6 ps-5 conteudo">
+      <div class="col-12 col-lg-6 ps-5 conteudo">
         
         <div class="ms-5 mt-5">
         <h1 class="display-4 fw-bold ">{{ titanName }}</h1>
@@ -10,7 +10,7 @@
         <p class="lead fw-bold">ALtura: <span class="fw-normal">{{ altura }}</span></p> 
          <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
          <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-         <p class="lead fw-bold"> Herdeiros: <span class="fw-normal"><br> {{ erenJ }} <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
+         <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ erenJ }} <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
           
            <button class="btn btn-danger" data-toggle="collapse"  @click="showHerd = !showHerd">
             
@@ -21,12 +21,12 @@
             <Transition name=slide-fade>
            <span v-if="showHerd">{{ grisha }}<br> {{ eren2 }}</span></Transition></p>
          </div>
-        <button class="btn btn-danger disabled">Mais Detalhes</button>
+        <button class="btn btn-danger disabled">Mais Detalhes(em breve)</button>
       </div>
       </div>
 
 
-      <div class="col-lg-2 text-end pe-0 imgcentro">
+      <div class="col-12 col-lg-6 text-end pe-0 imgcentro">
           <div id="titanCarousel" class="carousel slide" data-bs-ride="carousel"  >
             <div class="carousel-inner">
               <div v-for="(img, i) in titanimg" :key="i" class="carousel-item" :class="{ active: i === 0 }">
@@ -96,13 +96,6 @@ const titanimg = ['https://static0.cbrimages.com/wordpress/wp-content/uploads/20
 
 const titanCaptions = [erenJ, grisha, eren2 ]
 
-// export default {
-//   data() {
-//     return {
-//       name,
-//     };
-//   },
-// };
 </script>
 
 <style>
@@ -194,6 +187,22 @@ const titanCaptions = [erenJ, grisha, eren2 ]
 .slide-fade-leave-to {
   transform: translateX(20px);
   opacity: 0;
+}
+
+@media (max-width: 1379px) {
+  .conteudo {
+    margin-left: 0;
+    width: 40vw;
+    margin-top: 5vh;
+  }
+  
+  .imgcentro {
+    margin-top: 5vh;
+    width: 50%;
+  }
+  .background-border::after {
+    background: radial-gradient(circle, transparent 85%, #000 100%);
+  }
 }
 
 
