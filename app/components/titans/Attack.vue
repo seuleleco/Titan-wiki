@@ -19,7 +19,7 @@
             </button>
             <br>
             <Transition name=slide-fade>
-           <span v-if="showHerd">{{ grisha }}<br> {{ eren2 }}</span></Transition></p>
+           <span class="lead fw-normal" v-if="showHerd">{{ grisha }}<br> {{ eren2 }}</span></Transition></p>
          </div>
         <button class="btn btn-danger disabled">Mais Detalhes(em breve)</button>
       </div>
