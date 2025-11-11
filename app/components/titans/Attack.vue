@@ -101,34 +101,28 @@ const titanCaptions = [erenJ, grisha, eren2]
 .imgcentro {
   margin-top: 25vh;
   width: 70vh;
-
 }
 
 .img-fluid {
   border-radius: 20px 20px 20px 20px;
   border-color: none;
-
-
 }
 
 .conteudo {
-  height: 70vh;
-  width: 30vw;
+  height: auto;
+  min-height: fit-content;
   margin-top: 13vh;
-  margin-left: 45vh;
+  padding: 2rem;
   background-image: linear-gradient(rgb(0, 0, 0), rgb(99, 0, 0));
   color: white;
-  border-radius: 20px 20px 20px 20px;
-  border-color: none;
+  border-radius: 20px;
+  overflow: hidden;
 }
-
-
 
 .carousel-item {
   position: relative;
 
 }
-
 
 .caption-top {
   top: -10px;
@@ -155,7 +149,6 @@ const titanCaptions = [erenJ, grisha, eren2]
   font-family: fantasy;
 }
 
-
 .slide-fade-enter-active {
   transition: all 0.8s ease-in-out;
 }
@@ -170,20 +163,5 @@ const titanCaptions = [erenJ, grisha, eren2]
   opacity: 0;
 }
 
-@media (max-width: 1379px) {
-  .conteudo {
-    margin-left: 0;
-    width: 40vw;
-    margin-top: 5vh;
-  }
 
-  .imgcentro {
-    margin-top: 5vh;
-    width: 50%;
-  }
-
-  .background-border::after {
-    background: radial-gradient(circle, transparent 85%, #000 100%);
-  }
-}
 </style>
