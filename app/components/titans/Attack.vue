@@ -9,7 +9,7 @@
               <p class="lead fw-bold">ALtura: <span class="fw-normal">{{ altura }}</span></p>
               <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
               <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ erenJ }} <span
+              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ charActual }} <span
                     class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
                 <button class="btn btn-danger" data-toggle="collapse" @click="showHerd = !showHerd">
                   <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
@@ -50,7 +50,7 @@ import { getCharacterByIds } from '../../../services/charactersApi'
 const titanName = ref('')
 const altura = ref('')
 const skils = ref('')
-const erenJ = ref('')
+const charActual = ref('')
 const eren2 = ref('')
 const grisha = ref('')
 const alianca = ref('')
@@ -62,7 +62,7 @@ onMounted(async () => {
   skils.value = titans.find(titan => titan.id === 1)?.abilities
   alianca.value = titans.find(titan => titan.id === 1)?.allegiance
   const characters = await getCharacterByIds([188, 98, 160])
-  erenJ.value = characters.find(character => character.id === 188)?.name
+  charActual.value = characters.find(character => character.id === 188)?.name
   eren2.value = characters.find(character => character.id === 98)?.name
   grisha.value = characters.find(character => character.id === 160)?.name
 })
@@ -71,7 +71,7 @@ const titanimg = ['https://static0.cbrimages.com/wordpress/wp-content/uploads/20
   'https://image.idntimes.com/post/20200821/grisha-yeager-3a9273d4414d436bd5840ef7d089d172.jpg',
   'https://i.imgur.com/HFFycBY.png'
 ]
-const titanCaptions = [erenJ, grisha, eren2]
+const titanCaptions = [charActual, grisha, eren2]
 </script>
 
 <style>

@@ -9,7 +9,7 @@
               <p class="lead fw-bold">ALtura: <span class="fw-normal">{{ altura }}</span></p>
               <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
               <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ arminA }} <span
+              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ charActual }} <span
                     class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
                 <button class="btn btn-danger" data-toggle="collapse" @click="showHerd = !showHerd">
                   <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
@@ -51,7 +51,7 @@ const titanName = ref('')
 const altura = ref('')
 const skils = ref('')
 const alianca = ref('')
-const arminA = ref('')
+const charActual = ref('')
 const bert = ref('')
 const showHerd = ref(false)
 onMounted(async () => {
@@ -61,13 +61,13 @@ onMounted(async () => {
   skils.value = titans.find(titan => titan.id === 4)?.abilities
   alianca.value = titans.find(titan => titan.id === 4)?.allegiance
   const characters = await getCharacterByIds([1, 95])
-  arminA.value = characters.find(character => character.id === 1)?.name
+  charActual.value = characters.find(character => character.id === 1)?.name
   bert.value = characters.find(character => character.id === 95)?.name
 })
 useCarousel('#titanCarousel')
 const titanimg = ['https://imgur.com/OGrhlDr.jpg', 'https://imgur.com/yCT4526.png'
 ]
-const titanCaptions = [arminA, bert]
+const titanCaptions = [charActual, bert]
 </script>
 
 <style>

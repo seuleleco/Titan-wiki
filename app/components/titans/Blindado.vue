@@ -9,7 +9,7 @@
               <p class="lead fw-bold">ALtura: <span class="fw-normal">{{ altura }}</span></p>
               <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
               <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ erenJ }} <span
+              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ charActual }} <span
                     class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
                 <button class="btn btn-danger" data-toggle="collapse" @click="showHerd = !showHerd">
                   <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
@@ -17,7 +17,7 @@
                 </button>
                 <br>
                 <Transition name=slide-fade>
-                  <span class="lead fw-normal" v-if="showHerd">{{ grisha }}<br> {{ eren2 }}</span>
+                  <span class="lead fw-normal" v-if="showHerd">Sem informações<br></span>
                 </Transition>
               </p>
             </div>
@@ -52,30 +52,24 @@ import { getCharacterByIds } from '../../../services/charactersApi'
 const titanName = ref('')
 const altura = ref('')
 const skils = ref('')
-const erenJ = ref('')
-const eren2 = ref('')
-const grisha = ref('')
+const charActual = ref('')
 const alianca = ref('')
 const showHerd = ref(false)
+
 onMounted(async () => {
   const titans = await getTitanByIds([5])
   titanName.value = titans.find(titan => titan.id === 5)?.name
   altura.value = titans.find(titan => titan.id === 5)?.height
   skils.value = titans.find(titan => titan.id === 5)?.abilities
   alianca.value = titans.find(titan => titan.id === 5)?.allegiance
-  const characters = await getCharacterByIds([188, 98, 160])
-  erenJ.value = characters.find(character => character.id === 188)?.name
-  eren2.value = characters.find(character => character.id === 98)?.name
-  grisha.value = characters.find(character => character.id === 160)?.name
-
+  const characters = await getCharacterByIds([86])
+  charActual.value = characters.find(character => character.id === 86)?.name
 
 })
 useCarousel('#titanCarousel')
-const titanimg = ['https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/04/Eren-Attack-Titan-Final-Season.jpeg',
-  'https://image.idntimes.com/post/20200821/grisha-yeager-3a9273d4414d436bd5840ef7d089d172.jpg',
-  'https://i.imgur.com/HFFycBY.png'
+const titanimg = ['https://static.zerochan.net/Armored.Titan.full.4017176.jpg'
 ]
-const titanCaptions = [erenJ, grisha, eren2]
+const titanCaptions = [charActual]
 </script>
 
 <style>
@@ -95,7 +89,7 @@ const titanCaptions = [erenJ, grisha, eren2]
 }
 
 .background-gif-blindado {
-  background-image: url("/attack.gif");
+  background-image: url("/blindado.gif");
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
