@@ -1,8 +1,18 @@
 <template>
-  <div class="vw-100 background-gif-blindado">
-    <h1>blindado</h1>
-  </div>
+  <TitanBase 
+    :titan-id="5"
+    :character-ids="[86]"
+    background-class="background-gif-blindado"
+    :titan-images="titanImages">
+  </TitanBase>
 </template>
+
+<script setup>
+
+const titanImages = [
+  'https://static.zerochan.net/Armored.Titan.full.4017176.jpg'
+]
+</script>
 
 <style>
 .background-gif-blindado {
@@ -10,7 +20,6 @@
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
-  margin: 0;
 }
 </style>
-https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/09/armored-titan-1.jpg
+
