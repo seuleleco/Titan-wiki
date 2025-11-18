@@ -3,39 +3,36 @@
     <div class="min-vw-100 background-gif-hammer">
       <div class="row w-100 ">
         <div class="col-12 col-lg-6 ps-5 conteudo">
-
           <div class="ms-5 mt-5">
             <h1 class="display-4 fw-bold ">{{ titanName }}</h1>
             <div class="text-start mt-5 ">
               <p class="lead fw-bold">ALtura: <span class="fw-normal">{{ altura }}</span></p>
-              <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
+              <p class="col-11 lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
               <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ charActual }} <span
-                    class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
-
+              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ charActual }} 
+                <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
+                <Transition name=slide-fade>
+                  <span class="lead fw-normal" v-if="showHerd">{{ char2 }}<br></span>
+                </Transition>
                 <button class="btn btn-danger" data-toggle="collapse" @click="showHerd = !showHerd">
-
                   <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
                   Herdeiros Anteriores
                 </button>
                 <br>
-                <Transition name=slide-fade>
-                  <span class="lead fw-normal" v-if="showHerd">{{ lty }}<br></span>
-                </Transition>
               </p>
             </div>
             <button class="btn btn-danger disabled">Mais Detalhes(em breve)</button>
           </div>
         </div>
         <div class="col-12 col-lg-6 text-end pe-0 imgcentro">
-          <div id="titanCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div v-for="(img, i) in titanimg" :key="i" class="carousel-item" :class="{ active: i === 0 }">
-
-                <img :src="img" class="img-fluid" :alt="`Slide ${i + 1}`"
-                  style="max-height: 80vh; object-fit: contain;">
-                <div class="carousel-caption caption-top">
-                  <h5>{{ titanCaptions[i] }}</h5>
+          <div id="titanCarousel" class="swiper">
+            <div class="swiper-wrapper">
+              <div v-for="(img, i) in titanimg" :key="i" class="swiper-slide">
+                <div class="image-container">
+                  <img :src="img" class="img-fluid" :alt="`Slide ${i + 1}`">
+                  <div class="titan-caption">
+                    <h5>{{ titanCaptions[i] }}</h5>
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,7 +54,7 @@ const altura = ref('')
 const skils = ref('')
 const alianca = ref('')
 const charActual = ref('')
-const lty = ref('')
+const char2 = ref('')
 const showHerd = ref(false)
 
 onMounted(async () => {
@@ -69,7 +66,7 @@ onMounted(async () => {
 
   const characters = await getCharacterByIds([188, 118])
   charActual.value = characters.find(character => character.id === 188)?.name
-  lty.value = characters.find(character => character.id === 118)?.name
+  char2.value = characters.find(character => character.id === 118)?.name
 })
 
 useCarousel('#titanCarousel')
@@ -77,7 +74,7 @@ useCarousel('#titanCarousel')
 const titanimg = ['https://static0.srcdn.com/wordpress/wp-content/uploads/2024/05/attack-on-titan-s-war-hammer-titan-generating-a-weapon.jpg',
   'https://m.media-amazon.com/images/M/MV5BMTU2MDhmN2MtNmU3NS00YjdjLTkxMjItNzg3NzU3ZGYwMWRlXkEyXkFqcGc@._V1_.jpg'
 ]
-const titanCaptions = [lty, charActual]
+const titanCaptions = [char2, charActual]
 
 </script>
 
@@ -129,32 +126,38 @@ const titanCaptions = [lty, charActual]
 }
 
 
-
-.carousel-item {
+.image-container {
   position: relative;
-
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-.caption-top {
-  top: -10px;
-  left: -1vh;
-  bottom: auto;
-  width: 70vh;
-  height: 5vh;
+.titan-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10% !important;
   background-image: linear-gradient(rgb(0, 0, 0), rgb(99, 0, 0));
-  border-radius: 20px 20px 20px 20px;
-  border-color: none;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  pointer-events: none;
 }
 
-.carousel-item:hover .caption-top {
+.image-container:hover .titan-caption {
   opacity: 1;
 }
-
 .fs-6 {
   font-size: 0.9rem !important;
   color: rgb(255, 255, 255);
@@ -193,21 +196,3 @@ const titanCaptions = [lty, charActual]
   }
 }
 </style>
-
-
-<!-- <template>
-  <div class="min-vw-100 background-gif-hammer">
-    <h1>hammer</h1>
-  </div>
-</template>
-
-<style>
-.background-gif-hammer {
-  background-image: url("/hammer.gif");
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  margin: 0;
-}
-</style>
-https://static0.srcdn.com/wordpress/wp-content/uploads/2024/05/attack-on-titan-s-war-hammer-titan-generating-a-weapon.jpg -->

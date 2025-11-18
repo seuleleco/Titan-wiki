@@ -7,31 +7,32 @@
             <h1 class="display-4 fw-bold ">{{ titanName }}</h1>
             <div class="text-start mt-5 ">
               <p class="lead fw-bold">ALtura: <span class="fw-normal">{{ altura }}</span></p>
-              <p class="lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
+              <p class="col-11 lead fw-bold"> Habilidade: <span class="fw-normal">{{ skils }}</span></p>
               <p class="lead fw-bold"> Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ charActual }} <span
-                    class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
+              <p class="lead fw-bold"> Herdeiro: <span class="fw-normal"><br> {{ charActual }} 
+                <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
+                <Transition name=slide-fade>
+                  <span class="lead fw-normal" v-if="showHerd">Sem informações<br></span>
+                </Transition>
                 <button class="btn btn-danger" data-toggle="collapse" @click="showHerd = !showHerd">
                   <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
                   Herdeiros Anteriores
                 </button>
                 <br>
-                <Transition name=slide-fade>
-                  <span class="lead fw-normal" v-if="showHerd">Sem informações<br></span>
-                </Transition>
               </p>
             </div>
             <button class="btn btn-danger disabled">Mais Detalhes(em breve)</button>
           </div>
         </div>
         <div class="col-12 col-lg-6 text-end pe-0 imgcentro">
-          <div id="titanCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div v-for="(img, i) in titanimg" :key="i" class="carousel-item" :class="{ active: i === 0 }">
-                <img :src="img" class="img-fluid" :alt="`Slide ${i + 1}`"
-                  style="max-height: 80vh; object-fit: contain;">
-                <div class="carousel-caption caption-top">
-                  <h5>{{ titanCaptions[i] }}</h5>
+          <div id="titanCarousel" class="swiper">
+            <div class="swiper-wrapper">
+              <div v-for="(img, i) in titanimg" :key="i" class="swiper-slide">
+                <div class="image-container">
+                  <img :src="img" class="img-fluid" :alt="`Slide ${i + 1}`">
+                  <div class="titan-caption">
+                    <h5>{{ titanCaptions[i] }}</h5>
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,29 +122,36 @@ const titanCaptions = [charActual]
 }
 
 
-
-.carousel-item {
+.image-container {
   position: relative;
-
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-.caption-top {
-  top: -10px;
-  left: -1vh;
-  bottom: auto;
-  width: 70vh;
-  height: 5vh;
+.titan-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10% !important;
   background-image: linear-gradient(rgb(0, 0, 0), rgb(99, 0, 0));
-  border-radius: 20px 20px 20px 20px;
-  border-color: none;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  pointer-events: none;
 }
 
-.carousel-item:hover .caption-top {
+.image-container:hover .titan-caption {
   opacity: 1;
 }
 
@@ -187,19 +195,3 @@ const titanCaptions = [charActual]
 </style>
 
 
-<!-- <template>
-  <div class="vw-100 background-gif-blindado">
-    <h1>blindado</h1>
-  </div>
-</template>
-
-<style>
-.background-gif-blindado {
-  background-image: url("/blindado.gif");
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  margin: 0;
-}
-</style>
-https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/09/armored-titan-1.jpg -->
