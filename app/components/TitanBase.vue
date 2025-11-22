@@ -13,9 +13,14 @@
                 <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
                 <Transition name="slide-fade">
                   <span class="lead fw-normal" v-if="showHerd">
-                    <!-- <slot name="previous-heirs"></slot> -->
-                     <span v-if="char2 || char3 || char4">
-                     {{ char2  }}<br>{{ char3 }}<br>{{ char4 }}
+                    <span v-if="char2 && !char3">
+                    {{ char2 }}<br>
+                    </span>
+                    <span v-else-if="char2 && char3 && !char4">
+                      {{ char2  }}<br>{{ char3 }}<br>
+                    </span>
+                     <span v-else-if="char2 && char3 && char4">
+                     {{ char2  }}<br>{{ char3 }}<br>{{ char4 }}<br>
                      </span>
                      <span v-else>Sem Informações<br></span>
                   </span>

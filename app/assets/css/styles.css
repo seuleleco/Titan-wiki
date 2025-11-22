@@ -32,7 +32,10 @@
   color: white;
   border-radius: 20px 20px 20px 20px;
   border-color: none;
+  overflow: hidden;
+  overflow-y: auto;
 }
+
 .image-container {
   position: relative;
   width: 100%;
@@ -87,16 +90,25 @@ img {
   opacity: 0;
 }
 
-@media (max-width: 1379px) {
+@media (min-width: 769px) and (max-width: 1320px) {
+
+  .row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    height: 100vh;
+  }
+
   .conteudo {
-    margin-left: 0;
-    width: 40vw;
-    margin-top: 5vh;
+    margin-left: 0 !important;
+    width: 50vw !important;
+    flex-shrink: 0;
   }
 
   .imgcentro {
-    margin-top: 5vh;
-    width: 50%;
+    margin-top: 50vh !important;
+    width: 50vw !important;
+    flex-shrink: 0;
+    transform: translateY(-50%);
   }
 
   .background-border::after {
