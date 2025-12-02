@@ -24,7 +24,7 @@
 }
 
 .conteudo {
-  height: 70vh;
+  min-height: 70vh;
   width: 30vw;
   margin-top: 13vh;
   margin-left: 45vh;
@@ -32,6 +32,8 @@
   color: white;
   border-radius: 20px 20px 20px 20px;
   border-color: none;
+  padding-bottom: 1rem;
+  word-wrap: break-word;
 }
 .image-container {
   position: relative;
@@ -87,7 +89,7 @@ img {
   opacity: 0;
 }
 
-@media (max-width: 1379px) {
+/* @media (max-width: 1379px) {
   .conteudo {
     margin-left: 0;
     width: 40vw;
@@ -102,4 +104,4 @@ img {
   .background-border::after {
     background: radial-gradient(circle, transparent 85%, #000 100%);
   }
-}
+} */
