@@ -72,7 +72,7 @@ body {
 
 
 
-@media (max-width: 768px){
+/* @media (max-width: 768px){
   .containerbg {
     display: none !important;
   }
@@ -97,5 +97,5 @@ body {
     background: #333;
    
   }
-}
+} */
 </style>
