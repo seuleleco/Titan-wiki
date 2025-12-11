@@ -11,19 +11,13 @@
               <p class="lead fw-bold">Aliança: <span class="fw-normal">{{ alianca }}</span></p>
               <p class="lead fw-bold">Herdeiro: <span class="fw-normal"><br>{{ charActual }}
                 <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
-                <Transition name="slide-fade">
-                  <span class="lead fw-normal" v-if="showHerd">
-                    <span v-if="char2 && !char3">
-                    {{ char2 }}<br>
-                    </span>
-                    <span v-else-if="char2 && char3 && !char4">
-                      {{ char2  }}<br>{{ char3 }}<br>
-                    </span>
-                     <span v-else-if="char2 && char3 && char4">
-                     {{ char2  }}<br>{{ char3 }}<br>{{ char4 }}<br>
-                     </span>
-                     <span v-else>Sem Informações<br></span>
-                  </span>
+                <Transition name="fade">
+                  <div class="lead fw-normal" v-if="showHerd">
+                    <div v-if="previousHerd.length > 0">
+                      <div v-for="herd in previousHerd" :key="herd">{{ herd }}</div>
+                    </div>
+                     <div v-else>Sem Informações<br></div>
+                  </div>
                 </Transition>
                 <button class="btn btn-danger" @click="showHerd = !showHerd">
                   <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
@@ -74,6 +68,10 @@ const char2 = ref('')
 const char3 = ref('')
 const char4 = ref('')
 const showHerd = ref(false)
+
+const previousHerd = computed(() => {
+  return [char2.value, char3.value, char4.value].filter(Boolean)
+})
 
 onMounted(async () => {
   const titans = await getTitanByIds([props.titanId])

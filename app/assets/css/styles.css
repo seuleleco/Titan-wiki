@@ -24,7 +24,7 @@
 }
 
 .conteudo {
-  height: 70vh;
+  min-height: 70vh;
   width: 30vw;
   margin-top: 13vh;
   margin-left: 45vh;
@@ -32,8 +32,8 @@
   color: white;
   border-radius: 20px 20px 20px 20px;
   border-color: none;
-  overflow: hidden;
-  overflow-y: auto;
+  padding-bottom: 1rem;
+  word-wrap: break-word;
 }
 
 .image-container {
@@ -90,28 +90,19 @@ img {
   opacity: 0;
 }
 
-@media (min-width: 769px) and (max-width: 1320px) {
-
-  .row {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    height: 100vh;
-  }
-
+/* @media (max-width: 1379px) {
   .conteudo {
-    margin-left: 0 !important;
-    width: 50vw !important;
-    flex-shrink: 0;
+    margin-left: 0;
+    width: 40vw;
+    margin-top: 5vh;
   }
 
   .imgcentro {
-    margin-top: 50vh !important;
-    width: 50vw !important;
-    flex-shrink: 0;
-    transform: translateY(-50%);
+    margin-top: 5vh;
+    width: 50%;
   }
 
   .background-border::after {
     background: radial-gradient(circle, transparent 85%, #000 100%);
   }
-}
+} */
