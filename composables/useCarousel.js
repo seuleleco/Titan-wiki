@@ -8,18 +8,17 @@ export function useCarousel(
 	selector = '#titanCarousel',
 	options = {}
 ) {
+    const swiper = ref(null)
 	onMounted(() => {
 		nextTick(() => {
-			new Swiper(selector, {
+			swiper.value = new Swiper(selector, {
 				modules: [Navigation, Pagination, Autoplay],
 				slidesPerView: 1,
 				spaceBetween: 10,
-				loop: true,
-				autoplay: {
-					delay: 1000,
-					pauseOnMouseEnter: true
-				}
+				loop: false,
+				autoplay: false
 			})
 		})
 	})
+    return { swiper }
 }

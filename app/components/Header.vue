@@ -43,7 +43,7 @@ function set(novoComponente) {
 
 <style>
 .headerContainer {
-  background-color: brown;
+  background: linear-gradient(#630000, black);
   min-height: auto;
   padding: 10px;
   min-width: 100vw;
@@ -53,9 +53,15 @@ function set(novoComponente) {
 .btn-titan {
   position: relative;
   z-index: 4;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
+  border-radius: 7px;
+}
+
+.rotating-border-btn.active {
+  transform: scale(1.2);
+  z-index: 10;
 }
 
 .rotating-border-btn {
@@ -66,6 +72,7 @@ function set(novoComponente) {
   cursor: pointer;
   border-radius: 4px;
   --rotation: 0deg;
+  transition: transform 0.2s ease-in-out;
 }
 
 .rotating-border-btn.active::before {
@@ -83,5 +90,6 @@ function set(novoComponente) {
   background-color: black;
   border-radius: inherit;
   z-index: 3;
+  border-radius: 7px;
 }
 </style>

@@ -9,8 +9,9 @@
               <p class="lead fw-bold">Altura: <span class="fw-normal">{{ altura }}</span></p>
               <p class="col-11 lead fw-bold">Habilidade: <span class="fw-normal">{{ skils }}</span></p>
               <p class="lead fw-bold">Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-              <p class="lead fw-bold">Herdeiro: <span class="fw-normal"><br>{{ charActual }}
-                <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
+              <div class="lead fw-bold">Herdeiro: <span class="fw-normal"><br>
+                <a @click="changeSlide(0)" class="text-decoration-none text-light" style="cursor: pointer;">{{ charActual }} </a>
+                <span class="fs-6 fs-light fst-italic"> Herdeiro Atual</span></span><br>
                 <Transition name="fade">
                   <div class="lead fw-normal" v-if="showHerd">
                     <div v-if="previousHerd.length > 0">
@@ -23,9 +24,9 @@
                   <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
                   Herdeiros Anteriores
                 </button>
-              </p>
+              </div>
             </div>
-            <button class="btn btn-danger disabled">Mais Detalhes(em breve)</button>
+            <button class="btn btn-danger mt-3 disabled">Mais Detalhes(em breve)</button>
           </div>
         </div>
         <div class="col-12 col-lg-6 text-end pe-0 imgcentro">
@@ -88,7 +89,12 @@ onMounted(async () => {
   char4.value = characters[3]?.name
 })
 
-useCarousel('#titanCarousel')
+const { swiper } = useCarousel('#titanCarousel')
+const changeSlide = (index) => {
+  if (swiper.value) {
+    swiper.value.slideTo(index)
+  }
+}
 
 const titanimg = computed(() => props.titanImages)
 const titanCaptions = computed(() => [charActual.value, char2.value, char3.value, char4.value])

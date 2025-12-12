@@ -1,7 +1,7 @@
 <template>
-  <div class="d-none minititan ">
-    <img src="/minititan.png" alt="minititan" />
-  </div>
+<!--  <div class="d-none minititan ">-->
+<!--    <img src="/minititan.png" alt="minititan" />-->
+<!--  </div>-->
   <div class="containerbg min-vw-100">
     <Header
       :modelValue="componenteAtual"
