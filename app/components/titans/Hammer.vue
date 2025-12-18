@@ -9,8 +9,7 @@
 
 <script setup>
 
-const titanImages = ['https://static0.srcdn.com/wordpress/wp-content/uploads/2024/05/attack-on-titan-s-war-hammer-titan-generating-a-weapon.jpg',
-  'https://m.media-amazon.com/images/M/MV5BMTU2MDhmN2MtNmU3NS00YjdjLTkxMjItNzg3NzU3ZGYwMWRlXkEyXkFqcGc@._V1_.jpg'
+const titanImages = ['https://m.media-amazon.com/images/M/MV5BMTU2MDhmN2MtNmU3NS00YjdjLTkxMjItNzg3NzU3ZGYwMWRlXkEyXkFqcGc@._V1_.jpg', 'https://static0.srcdn.com/wordpress/wp-content/uploads/2024/05/attack-on-titan-s-war-hammer-titan-generating-a-weapon.jpg'
 ]
 </script>
 

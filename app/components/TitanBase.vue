@@ -15,13 +15,15 @@
                 <Transition name="fade">
                   <div class="lead fw-normal" v-if="showHerd">
                     <div v-if="previousHerd.length > 0">
-                      <div v-for="herd in previousHerd" :key="herd">{{ herd }}</div>
+                      <div v-for="(herd, index) in previousHerd" :key="herd">
+                        <a @click="changeSlide(index + 1)" class="text-decoration-none text-light" style="cursor: pointer;">{{ herd }}</a>
+                      </div>
                     </div>
                      <div v-else>Sem Informações<br></div>
                   </div>
                 </Transition>
-                <button class="btn btn-danger" @click="showHerd = !showHerd">
-                  <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
+                <button class="btn btn-danger" @click="toggleHerd">
+<!--                  <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>-->
                   Herdeiros Anteriores
                 </button>
               </div>
@@ -52,6 +54,7 @@
 import { useCarousel } from '../../composables/useCarousel'
 import { getTitanByIds } from '../../services/titanApi'
 import { getCharacterByIds } from '../../services/charactersApi'
+import { formatHeight } from '../../utils/dicionario.js'
 
 const props = defineProps({
   titanId: Number,
@@ -73,12 +76,18 @@ const showHerd = ref(false)
 const previousHerd = computed(() => {
   return [char2.value, char3.value, char4.value].filter(Boolean)
 })
+const toggleHerd = () => {
+  showHerd.value = !showHerd.value
+  if (!showHerd.value) {
+    changeSlide(0)
+  }
+}
 
 onMounted(async () => {
   const titans = await getTitanByIds([props.titanId])
   const titan = titans.find(t => t.id === props.titanId)
   titanName.value = titan?.name
-  altura.value = titan?.height
+  altura.value = formatHeight(titan?.height)
   skils.value = titan?.abilities
   alianca.value = titan?.allegiance
 
