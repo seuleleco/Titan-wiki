@@ -54,7 +54,7 @@
 import { useCarousel } from '../../composables/useCarousel'
 import { getTitanByIds } from '../../services/titanApi'
 import { getCharacterByIds } from '../../services/charactersApi'
-import { formatHeight } from '../../utils/dicionario.js'
+import { formatHeight, translateAbilities, abilities, translateName, titanNames } from '../../utils/dicionario'
 
 const props = defineProps({
   titanId: Number,
@@ -86,9 +86,9 @@ const toggleHerd = () => {
 onMounted(async () => {
   const titans = await getTitanByIds([props.titanId])
   const titan = titans.find(t => t.id === props.titanId)
-  titanName.value = titan?.name
+  titanName.value = translateName(titan?.name, titanNames)
   altura.value = formatHeight(titan?.height)
-  skils.value = titan?.abilities
+  skils.value = translateAbilities(titan?.abilities, abilities)
   alianca.value = titan?.allegiance
 
   const characters = await getCharacterByIds(props.characterIds)
