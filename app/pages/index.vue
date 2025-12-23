@@ -1,4 +1,5 @@
 <template>
+  <div v-if="!isMobile" class="containerbg min-vw-100">
   <div class="containerbg min-vw-100">
     <Header
       :modelValue="componenteAtual"
@@ -8,6 +9,12 @@
     <transition name="fade" mode="out-in">
       <component :is="componenteAtivo" />
     </transition>
+  </div>
+  </div>
+  <div v-else class="mobile-block">
+    <h2>Acesso bloqueado</h2>
+    <p>Este site requer uma tela com largura mínima de 900px</p>
+    <p>Versão para telas menores esta em desenvolvimento.</p>
   </div>
 </template>
 
@@ -28,6 +35,17 @@ useHead({
   }]
 })
 
+const isMobile = ref(false)
+
+onMounted(() => {
+  const checkScreenSize = () => {
+    isMobile.value = window.innerWidth < 900
+  }
+  checkScreenSize()
+  window.addEventListener('resize', checkScreenSize)
+})
+
+
 const titansComponents = {
   Attack,
   Hammer,
@@ -43,6 +61,16 @@ const componenteAtivo = computed(() => titansComponents[componenteAtual.value]);
 </script>
 
 <style>
+.mobile-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+
 body {
   margin: 0;
   background-color: black;
