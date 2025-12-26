@@ -1,7 +1,5 @@
 <template>
-  <div class="d-none minititan ">
-    <img src="/minititan.png" alt="minititan" />
-  </div>
+  <div v-if="!isMobile" class="containerbg min-vw-100">
   <div class="containerbg min-vw-100">
     <Header
       :modelValue="componenteAtual"
@@ -11,6 +9,12 @@
     <transition name="fade" mode="out-in">
       <component :is="componenteAtivo" />
     </transition>
+  </div>
+  </div>
+  <div v-else class="mobile-block">
+    <h2>Acesso bloqueado</h2>
+    <p>Este site requer uma tela com largura mínima de 900px</p>
+    <p>Versão para telas menores esta em desenvolvimento.</p>
   </div>
 </template>
 
@@ -25,13 +29,22 @@ import Bestial from "~/components/titans/Bestial.vue";
 import Carroca from "~/components/titans/Carroca.vue";
 import Mandibula from "~/components/titans/Mandibula.vue";
 
-
-
 useHead({
   script: [{src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
     defer: true
   }]
 })
+
+const isMobile = ref(false)
+
+onMounted(() => {
+  const checkScreenSize = () => {
+    isMobile.value = window.innerWidth < 900
+  }
+  checkScreenSize()
+  window.addEventListener('resize', checkScreenSize)
+})
+
 
 const titansComponents = {
   Attack,
@@ -48,6 +61,16 @@ const componenteAtivo = computed(() => titansComponents[componenteAtual.value]);
 </script>
 
 <style>
+.mobile-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+
 body {
   margin: 0;
   background-color: black;
@@ -70,32 +93,4 @@ body {
   filter: blur(20px);
 }
 
-
-
-/* @media (max-width: 768px){
-  .containerbg {
-    display: none !important;
-  }
-  .minititan {
-  display: flex !important;
-  position: fixed;
-  top: 65vh;
-  left: 18vh;
-  width: 20vh;
-  height: 20vh;
-  z-index: 9;
-}
-  body::before {
-    content: "📱No momento, o site não é compativel com dispositivos moveis";
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 2rem;
-    color: white;
-    background: #333;
-   
-  }
-} */
 </style>

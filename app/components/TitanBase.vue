@@ -9,23 +9,26 @@
               <p class="lead fw-bold">Altura: <span class="fw-normal">{{ altura }}</span></p>
               <p class="col-11 lead fw-bold">Habilidade: <span class="fw-normal">{{ skils }}</span></p>
               <p class="lead fw-bold">Aliança: <span class="fw-normal">{{ alianca }}</span></p>
-              <p class="lead fw-bold">Herdeiro: <span class="fw-normal"><br>{{ charActual }}
-                <span class="fs-6 fs-light fst-italic">Herdeiro Atual</span></span><br>
+              <div class="lead fw-bold">Herdeiro: <span class="fw-normal"><br>
+                <a @click="changeSlide(0)" class="text-decoration-none text-light" style="cursor: pointer;">{{ charActual }} </a>
+                <span class="fs-6 fs-light fst-italic"> Herdeiro Atual</span></span><br>
                 <Transition name="fade">
                   <div class="lead fw-normal" v-if="showHerd">
                     <div v-if="previousHerd.length > 0">
-                      <div v-for="herd in previousHerd" :key="herd">{{ herd }}</div>
+                      <div v-for="(herd, index) in previousHerd" :key="herd">
+                        <a @click="changeSlide(index + 1)" class="text-decoration-none text-light" style="cursor: pointer;">{{ herd }}</a>
+                      </div>
                     </div>
                      <div v-else>Sem Informações<br></div>
                   </div>
                 </Transition>
-                <button class="btn btn-danger" @click="showHerd = !showHerd">
-                  <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>
+                <button class="btn btn-danger" @click="toggleHerd">
+<!--                  <i :class="showHerd ? 'bi bi-caret-up-fill' : 'bi bi-caret-down-fill'"></i>-->
                   Herdeiros Anteriores
                 </button>
-              </p>
+              </div>
             </div>
-            <button class="btn btn-danger disabled">Mais Detalhes(em breve)</button>
+            <button class="btn btn-danger mt-3 disabled">Mais Detalhes(em breve)</button>
           </div>
         </div>
         <div class="col-12 col-lg-6 text-end pe-0 imgcentro">
@@ -51,6 +54,7 @@
 import { useCarousel } from '../../composables/useCarousel'
 import { getTitanByIds } from '../../services/titanApi'
 import { getCharacterByIds } from '../../services/charactersApi'
+import { formatHeight, translateAbilities, abilities, translateName, titanNames } from '../../utils/dicionario'
 
 const props = defineProps({
   titanId: Number,
@@ -72,13 +76,19 @@ const showHerd = ref(false)
 const previousHerd = computed(() => {
   return [char2.value, char3.value, char4.value].filter(Boolean)
 })
+const toggleHerd = () => {
+  showHerd.value = !showHerd.value
+  if (!showHerd.value) {
+    changeSlide(0)
+  }
+}
 
 onMounted(async () => {
   const titans = await getTitanByIds([props.titanId])
   const titan = titans.find(t => t.id === props.titanId)
-  titanName.value = titan?.name
-  altura.value = titan?.height
-  skils.value = titan?.abilities
+  titanName.value = translateName(titan?.name, titanNames)
+  altura.value = formatHeight(titan?.height)
+  skils.value = translateAbilities(titan?.abilities, abilities)
   alianca.value = titan?.allegiance
 
   const characters = await getCharacterByIds(props.characterIds)
@@ -88,7 +98,12 @@ onMounted(async () => {
   char4.value = characters[3]?.name
 })
 
-useCarousel('#titanCarousel')
+const { swiper } = useCarousel('#titanCarousel')
+const changeSlide = (index) => {
+  if (swiper.value) {
+    swiper.value.slideTo(index)
+  }
+}
 
 const titanimg = computed(() => props.titanImages)
 const titanCaptions = computed(() => [charActual.value, char2.value, char3.value, char4.value])

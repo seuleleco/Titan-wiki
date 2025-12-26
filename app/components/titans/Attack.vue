@@ -1,7 +1,7 @@
 <template>
   <TitanBase 
     :titan-id="1"
-    :character-ids="[188, 98, 160]"
+    :character-ids="[188, 160, 98 ]"
     background-class="background-gif-attack"
     :titan-images="titanImages">
   </TitanBase>
