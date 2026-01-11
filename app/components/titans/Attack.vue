@@ -1,10 +1,15 @@
 <template>
+  <div class="video-background">
+    <video autoplay muted loop class="background-video">
+      <source src="https://imgur.com/BkGkSSs.mp4" type="video/mp4">
+    </video>
   <TitanBase 
     :titan-id="1"
     :character-ids="[188, 160, 98 ]"
-    background-class="background-gif-attack"
+    background-class="background-video-attack"
     :titan-images="titanImages">
   </TitanBase>
+  </div>
 </template>
 
 <script setup>
@@ -17,10 +22,25 @@ const titanImages = [
 </script>
 
 <style>
-.background-gif-attack {
-  background-image: url("/attack.gif");
-  background-size: cover;
-  background-attachment: fixed;
+.video-background {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.background-video-attack {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
 }
 </style>
